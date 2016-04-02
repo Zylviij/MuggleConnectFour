@@ -43,9 +43,9 @@ public class Parser {
                 your_bot = parts[2];
                 if (!your_bot.equals("player1") && !your_bot.equals("player2")) throw new Exception("Unexpected your_bot. Found: " + your_bot);
             } else if (parts[1].equals("field_columns")) {
-                field.setColumns(Integer.parseInt(parts[2]));
+                if (Integer.parseInt(parts[2]) != 7) throw new Exception("Column count is wrong.");
             } else if (parts[1].equals("field_rows")) {
-                field.setRows(Integer.parseInt(parts[2]));
+                if (Integer.parseInt(parts[2]) != 6) throw new Exception("Row count is wrong.");
             } else if (parts[1].equals("your_botid")) {
                 your_botid = Integer.parseInt(parts[2]);
                 if (your_botid != 1 && your_botid != 2) throw new Exception("Unexpected your_botid. Found: " + your_botid);
@@ -61,7 +61,7 @@ public class Parser {
         } else if (parts[0].equals("action")) {
             if (parts[1].equals("move")) {
                 int column = bot.makeTurn(round, Integer.parseInt(parts[2]), field);
-                System.out.println("place_disc " + column);
+                System.out.println(column);
                 return column;
             } else throw new Exception("Unknown API. Found: " + parts[1]);
         } else throw new Exception("Unknown API. Use settings, update, or action. Found: " + parts[0]);
@@ -92,9 +92,9 @@ public class Parser {
                     your_bot = parts[2];
                     if (!your_bot.equals("player1") && !your_bot.equals("player2")) throw new Exception("Unexpected your_bot. Found: " + your_bot);
                 } else if (parts[1].equals("field_columns")) {
-                    field.setColumns(Integer.parseInt(parts[2]));
+                    if (Integer.parseInt(parts[2]) != 7) throw new Exception("Column count is wrong.");
                 } else if (parts[1].equals("field_rows")) {
-                    field.setRows(Integer.parseInt(parts[2]));
+                    if (Integer.parseInt(parts[2]) != 6) throw new Exception("Row count is wrong.");
                 } else if (parts[1].equals("your_botid")) {
                     your_botid = Integer.parseInt(parts[2]);
                     if (your_botid != 1 && your_botid != 2) throw new Exception("Unexpected your_botid. Found: " + your_botid);

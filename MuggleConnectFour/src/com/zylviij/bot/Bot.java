@@ -9,11 +9,7 @@ public class Bot {
     public int makeTurn(int round, int timebank, Field field) {
         return (int) (Math.random() * 7);
     }
-    
-    public String get() {
-        return (new Parser(new Bot())).toString();
-    }
-    
+        
     public static void main(String[] args) {
         try {
             new Parser(new Bot()).run();
